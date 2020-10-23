@@ -10,12 +10,7 @@ abstract class Vehicle
 
     protected $nbWheels;
 
-    public function __construct($color, $nbSeats, $nbWheels)
-    {
-        $this->color=$color;
-        $this->nbSeats=$nbSeats;
-        $this->nbWheels=$nbWheels;
-    }
+    abstract public function __construct();
 
     public function getColor(): string
     {
@@ -48,77 +43,41 @@ abstract class Vehicle
     }
 }
 
-
-// Bike.php
-
-final class Bike extends Vehicle
-{
-    protected $color;
-
-    protected $nbSeats;
-    
-    protected $nbWheels;
-
-    public function __construct($color, $nbSeats, $nbWheels)
-    {
-        parent:: __construct($color, $nbSeats, $nbWheels);
-    }
-}
-
-// Skateboard.php
-
-final class Skateboard extends Vehicle
-{
-    protected $color;
-    
-    protected $nbSeats;
-    
-    protected $nbWheels;
-
-    public function __construct($color, $nbSeats, $nbWheels)
-    {
-        parent:: __construct($color, $nbSeats, $nbWheels);
-    }
-}
-
 // Cars.php
 
-final class Car extends Vehicle
+class Car extends Vehicle
 {
     protected $color;
     
     protected $nbWheels;
 
     protected $nbSeats;
-    
+
     private $hasParkBrake;
 
-    public function __construct($color, $nbSeats, $nbWheels)
+    public function __construct()
     {
-        parent:: __construct($color, $nbSeats, $nbWheels);
+        $this->color = $color;
+        $this->nbSeats = $nbSeats;
+        $this->nbWheels = $nbWheels;
     }
 
-    public function getHasParkBrake(): bool
+    public function getHasParkBrake()
     {
-        return $this->hasParkBrake;
+        return $this->$HasParkBrake;
     }
-
-    public function setHasParkBrake(bool $getHasParkBrake): void
+    public function setHasParkBrake(bool $HasParkBrake): void
     {
-        $this->color = $getHasParkBrake;
+            $this->HasParkBrake = $HasParkBrake;
     }
-
-    public function start($hasParkBrake)
+    function start(bool $HasParkBrake)
     {
-        $sentence = "";
-        if ($hasParkBrake == 0) {
-            throw new Exception("Can't Start !");
-        }
+       if ($HasParkBrake == false) {
+           throw new Exception("You can't start !");
+       }
+       else
+       {
+           echo "You can go !";
+       }
     }
-
-    public function setParkBrake($hasParkBrake)
-    {
-        $this->hasParkBrake=$hasParkBrake;
-    }
-
 }
