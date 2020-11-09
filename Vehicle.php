@@ -66,13 +66,13 @@ class Car extends Vehicle
     {
         return $this->$HasParkBrake;
     }
-    public function setHasParkBrake(bool $HasParkBrake): void
+    public function setHasParkBrake(bool $hasParkBrake): void
     {
-            $this->HasParkBrake = $HasParkBrake;
+            $this->hasParkBrake = $hasParkBrake;
     }
-    function start(bool $HasParkBrake)
+    function start(bool $hasParkBrake)
     {
-       if ($HasParkBrake == false) {
+       if ($hasParkBrake == false) {
            throw new Exception("You can't start !");
        }
        else
